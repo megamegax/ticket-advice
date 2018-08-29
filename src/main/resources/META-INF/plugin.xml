@@ -1,0 +1,28 @@
+<idea-plugin>
+    <id>hu.hawser.co-author-plugin</id>
+    <name>Co-Author</name>
+    <vendor email="robert.gargya@gmail.com" url="https://github.com/hawser86">Robert Gargya</vendor>
+
+    <description><![CDATA[
+    <p>Add Jira Ticket easily to your commit message based on the</p>
+    ]]></description>
+
+    <idea-version since-build="173"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.vcs</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="TicketAdvisor.Button" class="TicketAdvisorButton" text="Ticket-Advisor"
+                description="Select JiraTicket for commit message" >
+            <add-to-group group-id="Vcs.MessageActionGroup" anchor="first"/>
+        </action>
+    </actions>
+</idea-plugin>
