@@ -3,8 +3,8 @@ plugins {
     id 'org.jetbrains.intellij' version '0.3.4'
 }
 ext.ktor_version = '0.9.3'
-ext.koin_version= '0.9.3'
-ext.mockito_kotlin_version ='2.0.0-RC1'
+ext.koin_version = '0.9.3'
+ext.mockito_kotlin_version = '2.0.0-RC1'
 
 group 'hu.hunyadym'
 version '1.0-SNAPSHOT'
@@ -19,7 +19,7 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    implementation "io.ktor:ktor-server-core:$ktor_version"
+    implementation "io.ktor:ktor-client-core:$ktor_version"
     implementation "org.koin:koin-core:$koin_version"
 
     testImplementation "org.koin:koin-test:$koin_version"
@@ -33,6 +33,7 @@ intellij {
     version '2018.1'
     intellij.updateSinceUntilBuild false //Disables updating since-build attribute in plugin.xml
 }
+kotlin { experimental { coroutines 'enable' } }
 /*
 publishPlugin {
     username intellijPublishUsername
