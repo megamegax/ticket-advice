@@ -1,12 +1,13 @@
 plugins {
-    id 'java'
     id "org.jetbrains.kotlin.jvm" version "1.2.61"
     id 'org.jetbrains.intellij' version '0.3.4'
 }
 ext.ktor_version = '0.9.3'
+ext.koin_version= '0.9.3'
+ext.mockito_kotlin_version ='2.0.0-RC1'
 
 group 'hu.hunyadym'
-
+version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 test {
     useJUnitPlatform()
@@ -19,9 +20,13 @@ repositories {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation "io.ktor:ktor-server-core:$ktor_version"
+    implementation "org.koin:koin-core:$koin_version"
 
+    testImplementation "org.koin:koin-test:$koin_version"
     testImplementation 'io.kotlintest:kotlintest-runner-junit5:3.1.7'
     testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
+
 }
 
 intellij {
