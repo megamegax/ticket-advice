@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id "org.jetbrains.kotlin.jvm" version "1.2.61"
+    id 'org.jetbrains.intellij' version '0.3.4'
+}
+ext.ktor_version = '0.9.3'
+
+group 'hu.hunyadym'
+
+sourceCompatibility = 1.8
+test {
+    useJUnitPlatform()
+}
+repositories {
+    jcenter()
+    maven { url "https://dl.bintray.com/kotlin/ktor" }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "io.ktor:ktor-server-core:$ktor_version"
+
+    testImplementation 'io.kotlintest:kotlintest-runner-junit5:3.1.7'
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
+
+intellij {
+    version '2018.1'
+    intellij.updateSinceUntilBuild false //Disables updating since-build attribute in plugin.xml
+}
+/*
+publishPlugin {
+    username intellijPublishUsername
+    password intellijPublishPassword
+}*/
