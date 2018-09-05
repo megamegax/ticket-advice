@@ -1,23 +1,15 @@
-import client.Client
-import client.ClientService
+import client.JiraClientService
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import org.koin.dsl.module.applicationContext
-import org.koin.standalone.StandAloneContext
 
 class TicketAdvisorButton : AnAction() {
-    val baseUrl = "http://index.hu"
-    // Koin module
-    val clientModule = applicationContext {
-        bean { ClientService(baseUrl) as Client }
-    }
-
-    init {
-        StandAloneContext.startKoin(listOf(clientModule))
-
-    }
+    val baseUrl = ""
 
     override fun actionPerformed(e: AnActionEvent?) {
         println("test")
+
+        val clientService = JiraClientService(baseUrl)
+        val tickets = clientService.fetchTickets(""""----"""")
+        println(tickets)
     }
 }
