@@ -6,10 +6,13 @@ class TicketAdvisorButton : AnAction() {
     val baseUrl = ""
 
     override fun actionPerformed(e: AnActionEvent?) {
-        println("test")
-
-        val clientService = JiraClientService(baseUrl)
-        val tickets = clientService.fetchTickets(""""----"""")
-        println(tickets)
+        try {
+            val clientService = JiraClientService(baseUrl) {
+                println("success $it")
+            }
+            clientService.fetchTickets("""query"""")
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 }
